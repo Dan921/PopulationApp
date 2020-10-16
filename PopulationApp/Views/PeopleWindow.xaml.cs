@@ -32,6 +32,7 @@ namespace PopulationApp.Views
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
             PersonWindow personWindow = new PersonWindow();
+            personWindow.Owner = this;
             personWindow.Show();
         }
 
@@ -41,8 +42,26 @@ namespace PopulationApp.Views
             {
                 Person person = (Person)DataGridPeople.SelectedItems[0];
                 PersonWindow personWindow = new PersonWindow(person);
+                personWindow.Owner = this;
                 personWindow.Show();
             }
+        }
+
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataGridPeople.SelectedItems.Count > 0)
+            {
+                Person person = (Person)DataGridPeople.SelectedItems[0];
+                populationContext.DeletePerson(person.PersonId);
+
+                Update();
+            }
+        }
+
+        public void Update()
+        {
+            DataGridPeople.ItemsSource = populationContext.GetPeople();
+            DataGridPeople.Items.Refresh();
         }
     }
 }

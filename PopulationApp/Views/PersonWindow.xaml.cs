@@ -42,7 +42,7 @@ namespace PopulationApp.Views
             TextBoxFirstName.Text = person.FirstName;
             TextBoxLastName.Text = person.LastName;
             TextBoxAge.Text = person.Age.ToString();
-            TextBoxGender.Text = person.FirstName;
+            TextBoxGender.Text = person.Gender;
             ComboBoxIdCountry.SelectedItem = person.CountryId;
 
             _person = person;
@@ -50,48 +50,53 @@ namespace PopulationApp.Views
 
         private void Button_OK_Click(object sender, RoutedEventArgs e)
         {
-
-            if (!string.IsNullOrEmpty(TextBoxFirstName.Text))
+            if (ModelCheck())
             {
                 _person.FirstName = TextBoxFirstName.Text;
-            } else
-            {
-                MessageBox.Show("Обязательно укажите имя");
-            }
-
-            if (!string.IsNullOrEmpty(TextBoxLastName.Text))
-            {
-                _person.FirstName = TextBoxLastName.Text;
-            } else
-            {
-                MessageBox.Show("Обязательно укажите фамилию");
-            }
-
-            try
-            {
+                _person.LastName = TextBoxLastName.Text;
                 _person.Age = int.Parse(TextBoxAge.Text);
-            } catch
-            {
-                MessageBox.Show("Поле 'Возраст' заполнено не корректно");
+                _person.Gender = TextBoxGender.Text;
+                _person.CountryId = (int)ComboBoxIdCountry.SelectedItem;
+
+                //try
+                //{
+                if (_person.PersonId == null)
+                    populationContext.AddPerson(_person);
+                if (_person.PersonId != null)
+                    populationContext.EditPerson(_person);
+                //}
+                //catch(Exception exc)
+                //{
+                //    MessageBox.Show(exc.ToString());
+                //}
+
+                ((PeopleWindow)this.Owner).Update();
+                this.Close();
             }
+        }
 
-            _person.Gender = TextBoxGender.Text;
-            _person.CountryId = (int)ComboBoxIdCountry.SelectedItem;
-
+        private bool ModelCheck()
+        {
+            if(string.IsNullOrEmpty(TextBoxFirstName.Text))
+            {
+                MessageBox.Show("Обязательно укажите имя!");
+                return false;
+            }
+            if (string.IsNullOrEmpty(TextBoxLastName.Text))
+            {
+                MessageBox.Show("Обязательно укажите Фамилию!");
+                return false;
+            }
             try
             {
-                if(_person.PersonId == null)
-                    populationContext.AddPerson(_person);
-                if(_person.PersonId != null)
-                    populationContext.EditPerson(_person);
+                int.Parse(TextBoxAge.Text);
             }
-            catch(Exception exc)
+            catch
             {
-                MessageBox.Show(exc.ToString());
+                MessageBox.Show("Некорректное значение возраста!");
+                return false;
             }
-
-            ComboBoxIdCountry.Items.Refresh();
-            this.Close();
+            return true;
         }
     }
 }

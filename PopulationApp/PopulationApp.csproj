@@ -77,6 +77,9 @@
     <Compile Include="Views\CountriesWindow.xaml.cs">
       <DependentUpon>CountriesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CountryWindow.xaml.cs">
+      <DependentUpon>CountryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PeopleWindow.xaml.cs">
       <DependentUpon>PeopleWindow.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CountriesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CountryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

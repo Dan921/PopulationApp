@@ -22,3 +22,5 @@ C:\Users\Kupry\source\repos\PopulationApp\PopulationApp\obj\Debug\PopulationApp.
 C:\Users\Kupry\source\repos\PopulationApp\PopulationApp\obj\Debug\PopulationApp.csproj.CoreCompileInputs.cache
 C:\Users\Kupry\source\repos\PopulationApp\PopulationApp\obj\Debug\PopulationApp.exe
 C:\Users\Kupry\source\repos\PopulationApp\PopulationApp\obj\Debug\PopulationApp.pdb
+C:\Users\Kupry\source\repos\PopulationApp\PopulationApp\obj\Debug\Views\CountryWindow.g.cs
+C:\Users\Kupry\source\repos\PopulationApp\PopulationApp\obj\Debug\Views\CountryWindow.baml
