@@ -1,0 +1,16 @@
+﻿<Window x:Class="PopulationApp.Views.PeopleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PopulationApp.Views"
+        mc:Ignorable="d"
+        Title="Люди" Height="500" Width="800">
+    <Grid>
+        <DataGrid Name="DataGridPeople" HorizontalAlignment="Left" Height="449" Margin="10,10,0,0" VerticalAlignment="Top" Width="549"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="578,10,0,0" VerticalAlignment="Top" Width="204" Height="47" FontSize="20" FontFamily="Arial" Click="Button_Add_Click"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Margin="578,62,0,0" VerticalAlignment="Top" Width="204" Height="47" FontSize="20" FontFamily="Arial" Click="Button_Edit_Click"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="578,114,0,0" VerticalAlignment="Top" Width="204" Height="47" FontSize="20" FontFamily="Arial"/>
+
+    </Grid>
+</Window>
